@@ -1,0 +1,76 @@
+#rma-widget, #ad-container {
+    width: 320px;
+    height: 480px;
+    overflow: hidden;
+}
+
+#ad-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#scene > div {
+    pointer-events: none;
+}
+
+#scene div * {
+    pointer-events: all;
+}
+
+#hide {
+    display: none;
+    position: absolute;
+    height: 0;
+    width: 0;
+    z-index: -999;
+}
+
+#headerLogo {
+}
+
+#bgBright, #bgDark {
+    transition: opacity 0.3s linear;
+}
+
+#bgBright {
+    opacity: 0;
+}
+
+#iAmFudo {
+    top: 65px;
+    left: 30px;
+    opacity: 0;
+}
+
+#scratchMe {
+    left: 60px;
+    top: 83px;
+    opacity: 1;
+}
+
+#btnAppStore {
+    bottom: 20px;
+    left: 80px;
+    top: initial;
+    z-index: 12;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#clearGirl, .scratchcard {
+    top: 126px;
+    left: 70px;
+}
+
+.float {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    transition: opacity 0.3s linear;
+}
+
+.scratchcard {
+    z-index: 11;
+}
