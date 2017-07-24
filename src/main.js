@@ -16,7 +16,7 @@ const browser = () => {
   // Firefox 1.0+
   const isFirefox = typeof InstallTrigger !== 'undefined';
 
-  // Safari 3.0+ "[object HTMLElementConstructor]" 
+  // Safari 3.0+ "[object HTMLElementConstructor]"
   const isSafari = /constructor/i.test(window.HTMLElement) || (function isItSafari(p) {
     return p.toString() === '[object SafariRemoteNotification]';
   }(!window.safari || safari.pushNotification));
@@ -158,19 +158,19 @@ class AdUnit extends Mads {
       }
       #ad-container {
         background-color: ${data.styles.bgColor};
-        
+
       }
-      
+
       #ad-container * {
         cursor: url(${data.images.cursor}) auto;
       }
-      
+
     `];
   }
 
   events() {
     this.elems.btnAppStore.onclick = () => {
-      this.tracker('E', 'iosLanding');
+      this.tracker('CTR', 'iosLanding');
       this.linkOpener('https://itunes.apple.com/us/app/zgirls-girls-vs-zombie-battle-game/id1174204073?mt=8');
     };
   }
