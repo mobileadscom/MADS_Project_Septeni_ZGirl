@@ -1,13 +1,82 @@
-/* global window, Image */
+/* global window, Image, document, opr, navigator, safari */
+/* eslint-disable no-underscore-dangle */
 import Mads from 'mads-custom';
 import Parallax from 'parallax-js';
 import Scratchcard from 'scratchcard';
 
 import './main.css';
 
+const browser = () => {
+  // Return cached result if avalible, else get result then cache it.
+  if (browser.prototype._cachedResult) { return browser.prototype._cachedResult; }
+
+  // Opera 8.0+
+  const isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+
+  // Firefox 1.0+
+  const isFirefox = typeof InstallTrigger !== 'undefined';
+
+  // Safari 3.0+ "[object HTMLElementConstructor]" 
+  const isSafari = /constructor/i.test(window.HTMLElement) || (function isItSafari(p) {
+    return p.toString() === '[object SafariRemoteNotification]';
+  }(!window.safari || safari.pushNotification));
+
+  // Internet Explorer 6-11
+  const isIE = /* @cc_on!@*/ false || !!document.documentMode;
+
+  // Edge 20+
+  const isEdge = !isIE && !!window.StyleMedia;
+
+  // Chrome 1+
+  const isChrome = !!window.chrome && !!window.chrome.webstore;
+
+  // Blink engine detection
+  const isBlink = (isChrome || isOpera) && !!window.CSS;
+
+  let _browser = "Don't know";
+
+  switch (true) {
+    case (isOpera === true): {
+      _browser = 'Opera';
+      break;
+    }
+    case (isFirefox === true): {
+      _browser = 'Firefox';
+      break;
+    }
+    case (isSafari === true): {
+      _browser = 'Safari';
+      break;
+    }
+    case (isChrome === true): {
+      _browser = 'Chrome';
+      break;
+    }
+    case (isIE === true): {
+      _browser = 'IE';
+      break;
+    }
+    case (isEdge === true): {
+      _browser = 'IE';
+      break;
+    }
+    case (isBlink === true): {
+      _browser = 'Blink';
+      break;
+    }
+    default:
+      _browser = "Don't know";
+  }
+
+  browser.prototype._cachedResult = _browser;
+
+  return _browser;
+};
 
 class AdUnit extends Mads {
   render() {
+    this.custTracker = [`https://www.cdn.serving1.net/a/analytic.htm?uid=0&isNew=true&referredUrl=${window.location.href || document.URL || ''}&rmaId=1&domainId=0&pageLoadId=0&userId=3728&pubUserId=0&campaignId=b0025760ef15981a0c39d6d452c4c8ef&browser=${browser()}&os=&domain=&callback=trackSuccess&type={{rmatype}}&tt={{rmatt}}&value={{rmavalue}}`];
+
     const data = this.data;
 
     return `
@@ -21,7 +90,7 @@ class AdUnit extends Mads {
         <div id="scene">
           <div data-depth="20.00"><img src="${data.images.brightBG}" id="bgBright" style="position:relative;" alt=""></div>
           <div data-depth="20.00"><img src="${data.images.darkBG}" id="bgDark" style="position:relative;" alt=""></div>
-          <div data-depth="0.00"><img src="${data.images.clearGirl}" id="clearGirl" style="position:relative;" alt=""></div>
+          <div data-depth="0.00"><img src="${data.images.clearGirl}" id="clearGirl" style="position:relative;opacity:0" alt=""></div>
         </div>
       </div>
     `;
@@ -49,10 +118,11 @@ class AdUnit extends Mads {
       img.onload = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, -4.5, -1);
+        this.elems.clearGirl.style.opacity = 1;
       };
 
       scratch.on('progress', (progress) => { // eslint-disable-line
-        if (Math.floor(progress * 100) >= 95) {
+        if (Math.floor(progress * 100) >= 50) {
           this.elems.bgBright.style.opacity = 1;
           this.elems.bgDark.style.opacity = 0;
 
@@ -61,13 +131,21 @@ class AdUnit extends Mads {
 
           this.elems.btnAppStore.style.opacity = 1;
           this.elems.btnAppStore.style.pointerEvents = 'auto';
+
+          this.elems.clearGirl.style.opacity = 1;
+
+          scratch.getWrapper().style.opacity = 1;
+          setTimeout(() => {
+            scratch.getWrapper().style.transition = 'opacity 0.2s';
+            scratch.getWrapper().style.opacity = 0;
+            this.tracker('E', 'clearScratch');
+          }, 10);
         }
       });
     };
   }
 
   style() {
-    console.log('elements', this.elems);
     const data = this.data;
 
     return [`
@@ -91,7 +169,10 @@ class AdUnit extends Mads {
   }
 
   events() {
-    console.log('load events');
+    this.elems.btnAppStore.onclick = () => {
+      this.tracker('E', 'iosLanding');
+      this.linkOpener('https://itunes.apple.com/us/app/zgirls-girls-vs-zombie-battle-game/id1174204073?mt=8');
+    };
   }
 }
 
