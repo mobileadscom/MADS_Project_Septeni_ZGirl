@@ -75,7 +75,7 @@ const browser = () => {
 
 class AdUnit extends Mads {
   render() {
-    this.custTracker = [`https://www.cdn.serving1.net/a/analytic.htm?uid=0&isNew=true&referredUrl=${window.location.href || document.URL || ''}&rmaId=1&domainId=0&pageLoadId=0&userId=3728&pubUserId=0&campaignId=b0025760ef15981a0c39d6d452c4c8ef&browser=${browser()}&os=&domain=&callback=trackSuccess&type={{rmatype}}&tt={{rmatt}}&value={{rmavalue}}`];
+    this.custTracker = [`https://www.cdn.serving1.net/a/analytic.htm?uid=0&isNew=true&referredUrl=${window.location.href || document.URL || ''}&rmaId=1&domainId=0&pageLoadId=${this.pgId}&userId=3728&pubUserId=0&campaignId=b0025760ef15981a0c39d6d452c4c8ef&browser=${browser()}&os=&domain=&callback=trackSuccess&type={{rmatype}}&tt={{rmatt}}&value={{rmavalue}}`];
 
     const data = this.data;
 

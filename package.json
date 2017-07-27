@@ -29,7 +29,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
-    "mads-custom": "^1.1.16",
+    "mads-custom": "^1.1.17",
     "parallax-js": "https://github.com/wagerfield/parallax",
     "scratchcard": "^0.5.6"
   }

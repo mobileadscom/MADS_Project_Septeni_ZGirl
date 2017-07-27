@@ -2991,9 +2991,9 @@ macaddress@^0.2.8:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/macaddress/-/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
 
-mads-custom@^1.1.16:
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/mads-custom/-/mads-custom-1.1.16.tgz#68d5ddf298db0545e9b0d11ebdd6bebfbabaebdc"
+mads-custom@^1.1.17:
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/mads-custom/-/mads-custom-1.1.17.tgz#f768d816d1df8d6ae00bab70155c9c211f773cd8"
   dependencies:
     babel-cli "^6.24.1"
     babel-preset-env "^1.5.2"
