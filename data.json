@@ -1,0 +1,16 @@
+json_data = {
+  "images": {
+    "darkBG": "img/bg-img-parralax-dark.png",
+    "brightBG": "img/bg-img-parralax-light.png",
+    "headerLogo": "img/header%20logo.png",
+    "scratchMe": "img/CTA%20scratch.png",
+    "clearGirl": "img/girls%20clear.png",
+    "shadowGirl": "img/girls%20shadow%202.png",
+    "iAmFudo": "img/CTA I AM FUDO.png",
+    "btnAppStore": "img/button appstore.png",
+    "cursor": "img/hand%20icon.png"
+  },
+  "styles": {
+    "bgColor": "#226781"
+  }
+}

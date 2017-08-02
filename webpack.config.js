@@ -11,7 +11,7 @@ module.exports = function (env) {
   var plugins = [
     new CopyWebpackPlugin([
       { from: 'index.html', to: 'dist/index.html' },
-      { from: 'settings.json', to: 'dist/settings.json' },
+      { from: 'data.json', to: 'dist/data.json' },
       { from: 'src/img', to: env && env.production ? 'dist/img' : 'img' },
       { from: 'src/js', to: env && env.production ? 'dist/js' : 'js' },
       { from: 'src/css', to: env && env.production ? 'dist/css' : 'css' }
@@ -19,7 +19,7 @@ module.exports = function (env) {
   ];
 
   var devServer = {
-    host: '192.168.1.11',
+    host: 'localhost',
     overlay: {
       warning: false,
       error: true
