@@ -1,14 +1,15 @@
 json_data = {
   "images": {
-    "darkBG": "img/bg-img-parralax-dark.png",
-    "brightBG": "img/bg-img-parralax-light.png",
-    "headerLogo": "img/header%20logo.png",
+    "mainBG": "img/BG%20with%20sky.png",
     "scratchMe": "img/CTA%20scratch.png",
     "clearGirl": "img/girls%20clear.png",
-    "shadowGirl": "img/girls%20shadow%202.png",
-    "iAmFudo": "img/CTA I AM FUDO.png",
+    "shadowGirl": "img/girls%20shadow.png",
+    "iAmName": "img/CTA Iam Kiko.png",
     "btnAppStore": "img/button appstore.png",
-    "cursor": "img/hand%20icon.png"
+    "cursor": "img/hand%20icon.png",
+    "river": "img/river.png",
+    "build": "img/build.png",
+    "cloud": "img/cloud.png"
   },
   "styles": {
     "bgColor": "#226781"

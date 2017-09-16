@@ -82,14 +82,16 @@ class AdUnit extends Mads {
     return `
       <div class="container" id="ad-container">
         <div class="preload-bright-bg"></div>
-        <img src="${data.images.headerLogo}" id="headerLogo" class="float" alt="">
+        <!--<img src="${data.images.headerLogo}" id="headerLogo" class="float" alt="">-->
         <img src="${data.images.scratchMe}" id="scratchMe" class="float" alt="">
-        <img src="${data.images.iAmFudo}" id="iAmFudo" class="float" alt="">
+        <img src="${data.images.iAmName}" id="iAmName" class="float" alt="">
         <img src="${data.images.btnAppStore}" id="btnAppStore" class="float" alt="">
         <div id="outsideScratch"></div>
         <div id="scene">
-          <div data-depth="20.00"><img src="${data.images.brightBG}" id="bgBright" style="position:relative;" alt=""></div>
-          <div data-depth="20.00"><img src="${data.images.darkBG}" id="bgDark" style="position:relative;" alt=""></div>
+          <div data-depth="0.00"><img src="${data.images.mainBG}" id="mainBG" style="position:relative;" alt=""></div>
+          <div data-depth="20.00"><img src="${data.images.river}" id="river" style="position:relative;top:230px;" alt=""></div>
+          <div data-depth="20.00"><img src="${data.images.build}" id="build" style="position:relative;top:80px;left:-35px;" alt=""></div>
+          <div data-depth="40.00"><img src="${data.images.cloud}" id="build" style="position:relative;left:-35px;" alt=""></div>
           <div data-depth="0.00"><img src="${data.images.clearGirl}" id="clearGirl" style="position:relative;opacity:0" alt=""></div>
         </div>
       </div>
@@ -97,17 +99,12 @@ class AdUnit extends Mads {
   }
 
   postRender() {
-    const data = this.data;
-    this.elems.bgDark.onload = () => {
-      this.elems.bgDark.style.left = `-${this.elems.bgDark.width / 6}px`;
-      this.elems.bgDark.style.top = '-10px';
-      this.elems.bgBright.style.left = this.elems.bgDark.style.left;
-      this.elems.bgBright.style.top = this.elems.bgDark.style.top;
-
+    const data = this.data; // eslint-disable-line
+    this.elems.mainBG.onload = () => {
       const parallax = new Parallax(this.elems.scene, { // eslint-disable-line
         limitY: 0.6,
         limitX: 0.7,
-        originX: 0.9,
+        originX: 0,
       });
 
       const scratch = new Scratchcard(this.elems.clearGirl); // eslint-disable-line
@@ -117,16 +114,13 @@ class AdUnit extends Mads {
       img.src = this.resolve(data.images.shadowGirl);
       img.onload = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, -4.5, -1);
+        ctx.drawImage(img, 1, 0);
         this.elems.clearGirl.style.opacity = 1;
       };
 
       scratch.on('progress', (progress) => { // eslint-disable-line
         if (Math.floor(progress * 100) >= 50) {
-          this.elems.bgBright.style.opacity = 1;
-          this.elems.bgDark.style.opacity = 0;
-
-          this.elems.iAmFudo.style.opacity = 1;
+          this.elems.iAmName.style.opacity = 1;
           this.elems.scratchMe.style.opacity = 0;
 
           this.elems.btnAppStore.style.opacity = 1;
@@ -150,7 +144,7 @@ class AdUnit extends Mads {
 
     return [`
       .preload-bright-bg {
-        background: url(${data.images.brightBG}) no-repeat -9999px -9999px;
+        background: url(${data.images.mainBG}) no-repeat -9999px -9999px;
         position: absolute;
         height: 0;
         width: 0;
@@ -171,7 +165,7 @@ class AdUnit extends Mads {
   events() {
     this.elems.btnAppStore.onclick = () => {
       this.tracker('CTR', 'iosLanding');
-      this.linkOpener('https://itunes.apple.com/us/app/zgirls-girls-vs-zombie-battle-game/id1174204073?mt=8');
+      this.linkOpener('https://sample.app.com');
     };
   }
 }

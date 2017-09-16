@@ -26,9 +26,6 @@
     z-index: -999;
 }
 
-#headerLogo {
-}
-
 #bgBright, #bgDark {
     transition: opacity 0.3s linear;
 }
@@ -37,10 +34,11 @@
     opacity: 0;
 }
 
-#iAmFudo {
-    top: 65px;
+#iAmName {
+    top: 40px;
     left: 30px;
     opacity: 0;
+    pointer-events: none;
 }
 
 #scratchMe {
