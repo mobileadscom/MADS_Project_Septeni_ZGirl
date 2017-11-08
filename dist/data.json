@@ -1,17 +1,17 @@
 json_data = {
-  "images": {
-    "mainBG": "img/BG%20with%20sky.png",
-    "scratchMe": "img/CTA%20scratch.png",
-    "clearGirl": "img/girls%20clear.png",
-    "shadowGirl": "img/girls%20shadow.png",
-    "iAmName": "img/CTA Iam Kiko.png",
-    "btnAppStore": "img/button appstore.png",
-    "cursor": "img/hand%20icon.png",
-    "river": "img/river.png",
-    "build": "img/build.png",
-    "cloud": "img/cloud.png"
-  },
-  "styles": {
-    "bgColor": "#226781"
+  "mainBG": "img/BG%20with%20sky.png",
+  "scratchMe": "img/CTA%20scratch.png",
+  "clearGirl": "img/girls%20clear.png",
+  "shadowGirl": "img/girls%20shadow.png",
+  "iAmName": "img/CTA Iam Kiko.png",
+  "btnAppStore": "img/button appstore.png",
+  "cursor": "img/hand%20icon.png",
+  "river": "img/river.png",
+  "build": "img/build.png",
+  "cloud": "img/cloud.png",
+  "bgColor": "#226781",
+  "leadGenEle": {
+    "leadGenTrackID": "0",
+    "elements": []
   }
 }

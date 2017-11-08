@@ -75,24 +75,23 @@ const browser = () => {
 
 class AdUnit extends Mads {
   render() {
-    this.custTracker = [`https://www.cdn.serving1.net/a/analytic.htm?uid=0&isNew=true&referredUrl=${window.location.href.split('?')[0] || document.URL.split('?')[0] || ''}&rmaId=1&domainId=0&pageLoadId=${this.pgId}&userId=3728&pubUserId=0&campaignId=b0025760ef15981a0c39d6d452c4c8ef&browser=${browser()}&os=&domain=&callback=trackSuccess&type={{rmatype}}&tt={{rmatt}}&value={{rmavalue}}`];
-
+    // this.custTracker = [`https://www.cdn.serving1.net/a/analytic.htm?uid=0&isNew=true&referredUrl=${window.location.href.split('?')[0] || document.URL.split('?')[0] || ''}&rmaId=1&domainId=0&pageLoadId=${this.pgId}&userId=3728&pubUserId=0&campaignId=b0025760ef15981a0c39d6d452c4c8ef&browser=${browser()}&os=&domain=&callback=trackSuccess&type={{rmatype}}&tt={{rmatt}}&value={{rmavalue}}`];
+    console.log(this);
     const data = this.data;
 
     return `
       <div class="container" id="ad-container">
         <div class="preload-bright-bg"></div>
-        <!--<img src="${data.images.headerLogo}" id="headerLogo" class="float" alt="">-->
-        <img src="${data.images.scratchMe}" id="scratchMe" class="float" alt="">
-        <img src="${data.images.iAmName}" id="iAmName" class="float" alt="">
-        <img src="${data.images.btnAppStore}" id="btnAppStore" class="float" alt="">
+        <img src="${data.scratchMe}" id="scratchMe" class="float" alt="">
+        <img src="${data.iAmName}" id="iAmName" class="float" alt="">
+        <img src="${data.btnAppStore}" id="btnAppStore" class="float" alt="">
         <div id="outsideScratch"></div>
         <div id="scene">
-          <div data-depth="0.00"><img src="${data.images.mainBG}" id="mainBG" style="position:relative;" alt=""></div>
-          <div data-depth="20.00"><img src="${data.images.river}" id="river" style="position:relative;top:230px;" alt=""></div>
-          <div data-depth="20.00"><img src="${data.images.build}" id="build" style="position:relative;top:80px;left:-35px;" alt=""></div>
-          <div data-depth="40.00"><img src="${data.images.cloud}" id="build" style="position:relative;left:-35px;" alt=""></div>
-          <div data-depth="0.00"><img src="${data.images.clearGirl}" id="clearGirl" style="position:relative;opacity:0" alt=""></div>
+          <div data-depth="0.00"><img src="${data.mainBG}" id="mainBG" style="position:relative;" alt=""></div>
+          <div data-depth="20.00"><img src="${data.river}" id="river" style="position:relative;top:230px;" alt=""></div>
+          <div data-depth="20.00"><img src="${data.build}" id="build" style="position:relative;top:80px;left:-35px;" alt=""></div>
+          <div data-depth="40.00"><img src="${data.cloud}" id="build" style="position:relative;left:-35px;" alt=""></div>
+          <div data-depth="0.00"><img src="${data.clearGirl}" id="clearGirl" style="position:relative;opacity:0" alt=""></div>
         </div>
       </div>
     `;
@@ -111,7 +110,7 @@ class AdUnit extends Mads {
       const canvas = scratch.getCanvas();
       const ctx = canvas.getContext('2d');
       const img = new Image();
-      img.src = this.resolve(data.images.shadowGirl);
+      img.src = this.resolve(data.shadowGirl);
       img.onload = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 1, 0);
@@ -144,19 +143,19 @@ class AdUnit extends Mads {
 
     return [`
       .preload-bright-bg {
-        background: url(${data.images.mainBG}) no-repeat -9999px -9999px;
+        background: url(${data.mainBG}) no-repeat -9999px -9999px;
         position: absolute;
         height: 0;
         width: 0;
         z-index: -9999;
       }
       #ad-container {
-        background-color: ${data.styles.bgColor};
+        background-color: ${data.bgColor};
 
       }
 
       #ad-container * {
-        cursor: url(${data.images.cursor}) auto;
+        cursor: url(${data.cursor}) auto;
       }
 
     `];
@@ -164,8 +163,9 @@ class AdUnit extends Mads {
 
   events() {
     this.elems.btnAppStore.onclick = () => {
-      this.tracker('CTR', 'iosLanding');
-      this.linkOpener('https://sample.app.com');
+      this.tracker('CTR', 'landing');
+      this.tracker('E', 'landing');
+      this.linkOpener(this.data.url);
     };
   }
 }

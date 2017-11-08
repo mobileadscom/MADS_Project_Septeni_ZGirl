@@ -1,0 +1,115 @@
+{
+	"sections": [{
+			"name": "Assets",
+			"inputs": [{
+					"title": "Background",
+					"value": "img/BG with sky.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "mainBG"
+				},
+				{
+					"title": "Button",
+					"value": "img/button appstore.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "btnAppStore"
+				},
+				{
+					"title": "Scratch Me",
+					"value": "img/CTA scratch.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "scratchMe"
+				},
+				{
+					"title": "Shadow/Overlay",
+					"value": "img/girls shadow.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "shadowGirl"
+				},
+				{
+					"title": "Reveal/Original Image",
+					"value": "img/girls clear.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "clearGirl"
+				},
+				{
+					"title": "Cursor",
+					"value": "img/hand icon.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "cursor"
+				},
+				{
+					"title": "Reveal/Message",
+					"value": "img/CTA Iam Kiko.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "iAmName"
+				},
+				{
+					"title": "Lower Moving BG",
+					"value": "img/river.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "river"
+				},
+				{
+					"title": "Middle Moving BG",
+					"value": "img/build.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "build"
+				},
+				{
+					"title": "Upper Moving BG",
+					"value": "img/cloud.png",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "cloud"
+				}
+			]
+		},
+		{
+			"name": "Information",
+			"inputs": [{
+
+					"title": "Background Color",
+					"value": "#226781",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "bgColor"
+				},
+				{
+					"title": "Button URL",
+					"value": "http://google.com",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "url"
+				}
+			]
+		}
+	],
+	"property": {
+		"mainBG": "img/BG%20with%20sky.png",
+		"scratchMe": "img/CTA%20scratch.png",
+		"clearGirl": "img/girls%20clear.png",
+		"shadowGirl": "img/girls%20shadow.png",
+		"iAmName": "img/CTA Iam Kiko.png",
+		"btnAppStore": "img/button appstore.png",
+		"cursor": "img/hand%20icon.png",
+		"river": "img/river.png",
+		"build": "img/build.png",
+		"cloud": "img/cloud.png",
+		"url": "http://google.com",
+		"bgColor": "#226781",
+		"leadGenEle": {
+			"leadGenTrackID": "0",
+			"elements": []
+		}
+	},
+	"trackers": ["landing", "clearScratch"]
+}
