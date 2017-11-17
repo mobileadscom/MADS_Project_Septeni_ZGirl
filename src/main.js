@@ -81,10 +81,12 @@ class AdUnit extends Mads {
 
     return `
       <div class="container" id="ad-container">
+        <div id="blocker" style="width:320px;height:480px;display:none;position:absolute;left:0;top:0;z-index:999;"></div>
         <div class="preload-bright-bg"></div>
         <img src="${data.scratchMe}" id="scratchMe" class="float" alt="">
         <img src="${data.iAmName}" id="iAmName" class="float" alt="">
         <img src="${data.btnAppStore}" id="btnAppStore" class="float" alt="">
+        <img src="${data.handGif}" id="handGif" class="float" alt="">
         <div id="outsideScratch"></div>
         <div id="scene">
           <div data-depth="0.00"><img src="${data.mainBG}" id="mainBG" style="position:relative;" alt=""></div>
@@ -117,6 +119,10 @@ class AdUnit extends Mads {
         this.elems.clearGirl.style.opacity = 1;
       };
 
+      scratch.getWrapper().addEventListener('mousedown', () => {
+        this.elems.handGif.style.display = 'none';
+      });
+
       scratch.on('progress', (progress) => { // eslint-disable-line
         if (Math.floor(progress * 100) >= 50) {
           this.elems.iAmName.style.opacity = 1;
@@ -132,6 +138,8 @@ class AdUnit extends Mads {
             scratch.getWrapper().style.transition = 'opacity 0.2s';
             scratch.getWrapper().style.opacity = 0;
             this.tracker('E', 'clearScratch');
+
+            this.elems.blocker.style.display = 'block';
           }, 10);
         }
       });
@@ -158,6 +166,30 @@ class AdUnit extends Mads {
         cursor: url(${data.cursor}) auto;
       }
 
+      #scratchMe {
+        left: ${data.scratchMePosition.split(',')[0]} !important;
+        top: ${data.scratchMePosition.split(',')[1]} !important;
+      }
+
+      #iAmName {
+        left: ${data.revealMsgPosition.split(',')[0]} !important;
+        top: ${data.revealMsgPosition.split(',')[1]} !important;
+      }
+
+      #btnAppStore {
+        left: ${data.btnMorePosition.split(',')[0]} !important;
+        bottom: ${data.btnMorePosition.split(',')[1]} !important;
+      }
+
+      #handGif {
+        left: ${data.handIconPosition.split(',')[0]} !important;
+        top: ${data.handIconPosition.split(',')[1]} !important;
+      }
+
+      #clearGirl, .scratchcard {
+        left: ${data.mainImgPosition.split(',')[0]} !important;
+        top: ${data.mainImgPosition.split(',')[1]} !important;
+      }
     `];
   }
 
@@ -167,6 +199,29 @@ class AdUnit extends Mads {
       this.tracker('E', 'landing');
       this.linkOpener(this.data.url);
     };
+
+    // Test via a getter in the options object to see if the passive property is accessed
+    let supportsPassive = false;
+    try {
+      const opts = Object.defineProperty({}, 'passive', {
+        get() {
+          supportsPassive = true;
+        },
+      });
+      window.addEventListener('test', null, opts);
+    } catch (e) { console.log(e); }
+
+    document.addEventListener(document, 'touchstart', (e) => {
+      console.log(e.defaultPrevented); // will be false
+      e.preventDefault(); // does nothing since the listener is passive
+      console.log(e.defaultPrevented); // still false
+    }, supportsPassive ? { passive: true } : false);
+
+    document.getElementById('blocker').addEventListener('click', () => {
+      this.tracker('CTR', 'landing');
+      this.tracker('E', 'landing');
+      this.linkOpener(this.data.url);
+    }, supportsPassive ? { passive: true } : false);
   }
 }
 

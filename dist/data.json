@@ -10,6 +10,12 @@ json_data = {
   "build": "img/build.png",
   "cloud": "img/cloud.png",
   "bgColor": "#226781",
+  "handGif": "img/hand-icon.gif",
+  "btnMorePosition": "80px,20px",
+  "scratchMePosition": "60x,83px",
+  "mainImgPosition": "70px,126px",
+  "revealMsgPosition": "30px,40px",
+  "handIconPosition": "0px,0px",
   "leadGenEle": {
     "leadGenTrackID": "0",
     "elements": []

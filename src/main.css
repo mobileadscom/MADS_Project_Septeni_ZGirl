@@ -34,6 +34,10 @@
     opacity: 0;
 }
 
+#handGif {
+  pointer-events: none;
+}
+
 #iAmName {
     top: 40px;
     left: 30px;

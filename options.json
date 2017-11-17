@@ -15,6 +15,13 @@
 					"inputClass": "",
 					"target": "btnAppStore"
 				},
+        {
+          "title": "Button Position (Left, Bottom)",
+          "value": "80px,20px",
+          "placeholder": "",
+          "inputClass": "",
+          "target": "btnMorePosition"
+        },
 				{
 					"title": "Scratch Me",
 					"value": "img/CTA scratch.png",
@@ -22,6 +29,13 @@
 					"inputClass": "",
 					"target": "scratchMe"
 				},
+        {
+          "title": "Scratch Me Position (Left, Top)",
+          "value": "60px,83px",
+          "placeholder": "",
+          "inputClass": "",
+          "target": "scratchMePosition"
+        },
 				{
 					"title": "Shadow/Overlay",
 					"value": "img/girls shadow.png",
@@ -36,6 +50,13 @@
 					"inputClass": "",
 					"target": "clearGirl"
 				},
+        {
+          "title": "Shadow/Original Position (Left, Top)",
+          "value": "70px,126px",
+          "placeholder": "",
+          "inputClass": "",
+          "target": "mainImgPosition"
+        },
 				{
 					"title": "Cursor",
 					"value": "img/hand icon.png",
@@ -44,12 +65,19 @@
 					"target": "cursor"
 				},
 				{
-					"title": "Reveal/Message",
+					"title": "Reveal Message",
 					"value": "img/CTA Iam Kiko.png",
 					"placeholder": "",
 					"inputClass": "",
 					"target": "iAmName"
 				},
+        {
+          "title": "Reveal Message Position (Left, Top)",
+          "value": "30px,40px",
+          "placeholder": "",
+          "inputClass": "",
+          "target": "revealMsgPosition"
+        },
 				{
 					"title": "Lower Moving BG",
 					"value": "img/river.png",
@@ -70,7 +98,21 @@
 					"placeholder": "",
 					"inputClass": "",
 					"target": "cloud"
-				}
+				},
+        {
+					"title": "Animated Hand",
+					"value": "img/hand-icon.gif",
+					"placeholder": "",
+					"inputClass": "",
+					"target": "handGif"
+				},
+        {
+          "title": "Animated Hand Position (Left, Top)",
+          "value": "0px,0px",
+          "placeholder": "",
+          "inputClass": "",
+          "target": "handIconPosition"
+        }
 			]
 		},
 		{
@@ -104,6 +146,12 @@
 		"river": "img/river.png",
 		"build": "img/build.png",
 		"cloud": "img/cloud.png",
+    "handGif": "img/hand-icon.gif",
+    "btnMorePosition": "80px,20px",
+    "scratchMePosition": "60x,83px",
+    "mainImgPosition": "70px,126px",
+    "revealMsgPosition": "30px,40px",
+    "handIconPosition": "0px,0px",
 		"url": "http://google.com",
 		"bgColor": "#226781",
 		"leadGenEle": {
